@@ -2,16 +2,14 @@
 
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { CodeSquare } from "lucide-react";
-import { ImageZoom } from "./zoomable-image";
+import { ImageZoom } from "./ZoomableImage";
 
-type Testimonial = {
-  quote: string;
-  name: string;
-  designation: string;
+type Project = {
+  description: string;
+  project_name: string;
+  tech: string;
   src: string;
 };
 
@@ -20,12 +18,12 @@ export const AnimatedBox = ({
   autoplay = false,
   className,
 }: {
-  testimonials: Testimonial[];
+  testimonials: Project[];
   autoplay?: boolean;
   className?: string;
 }) => {
   const [active, setActive] = useState(0);
-  console.log(testimonials[0].src)
+  
   const handleNext = () => {
     setActive((prev) => (prev + 1) % testimonials.length);
   };
@@ -50,10 +48,11 @@ export const AnimatedBox = ({
   };
 
   return (
-    <div className={cn("max-w-sm md:max-w-4xl mx-auto px-4 md:px-8 lg:px-12 py-20", className)}>
-      <div className="relative grid grid-cols-1 md:grid-cols-2 gap-20">
-        <div>
-          <div className="relative h-80 w-full">
+    <div className={cn("max-w-6xl mx-auto px-4 md:px-8 lg:px-12 py-20", className)}>
+      <div className="relative grid grid-cols-1 md:grid-cols-[1.5fr_2fr] gap-16">
+        {/* Image Column */}
+        <div className="md:sticky md:top-20">
+          <div className="relative h-[500px] w-full">
             <AnimatePresence>
               {testimonials.map((testimonial, index) => (
                 <motion.div
@@ -84,23 +83,26 @@ export const AnimatedBox = ({
                     duration: 0.4,
                     ease: "easeInOut",
                   }}
-                  className="absolute inset-0 origin-bottom"
+                  className="absolute inset-0 origin-bottom flex items-center justify-center"
                 >
                   <ImageZoom
                     src={testimonial.src}
-                    alt={testimonial.name}
-                    width={500}
-                    height={500}
-                    className="h-full w-full rounded-3xl object-cover object-center"
+                    alt={testimonial.project_name}
+                    width={700}
+                    height={700}
+                    className="flex items-center h-full w-full rounded-3xl object-cover object-center"
                   />
                 </motion.div>
               ))}
             </AnimatePresence>
           </div>
         </div>
-        <div className="flex justify-between flex-col py-4">
+
+        {/* Content Column */}
+        <div className="flex flex-col">
           <motion.div
             key={active}
+            className="flex flex-col"
             initial={{
               y: 20,
               opacity: 0,
@@ -118,14 +120,19 @@ export const AnimatedBox = ({
               ease: "easeInOut",
             }}
           >
-            <h3 className="text-2xl font-bold text-foreground">
-              {testimonials[active].name}
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              {testimonials[active].designation}
-            </p>
-            <motion.p className="text-lg text-muted-foreground mt-8">
-              {testimonials[active].quote.split(" ").map((word, index) => (
+            {/* Project Name and Tech Stack */}
+            <div>
+              <h3 className="text-3xl font-bold text-foreground mb-2">
+                {testimonials[active].project_name}
+              </h3>
+              <p className="text-lg text-muted-foreground mb-6">
+                {testimonials[active].tech}
+              </p>
+            </div>
+
+            {/* Description */}
+            <motion.p className="text-xl mt-[-10] text-muted-foreground max-w-none whitespace-normal leading-relaxed">
+              {testimonials[active].description.split(" ").map((word, index) => (
                 <motion.span
                   key={index}
                   initial={{
@@ -149,21 +156,23 @@ export const AnimatedBox = ({
                 </motion.span>
               ))}
             </motion.p>
+
+            {/* Buttons positioned directly below description */}
+            <div className="flex gap-4 mt-8">
+              <button
+                onClick={handlePrev}
+                className="h-10 w-10 rounded-full bg-secondary flex items-center justify-center group/button hover:bg-primary transition-colors"
+              >
+                <IconArrowLeft className="h-6 w-6 text-foreground group-hover/button:rotate-12 transition-transform" />
+              </button>
+              <button
+                onClick={handleNext}
+                className="h-10 w-10 rounded-full bg-secondary flex items-center justify-center group/button hover:bg-primary transition-colors"
+              >
+                <IconArrowRight className="h-6 w-6 text-foreground group-hover/button:-rotate-12 transition-transform" />
+              </button>
+            </div>
           </motion.div>
-          <div className="flex gap-4 pt-12 md:pt-0">
-            <button
-              onClick={handlePrev}
-              className="h-7 w-7 rounded-full bg-secondary flex items-center justify-center group/button"
-            >
-              <IconArrowLeft className="h-5 w-5 text-foreground group-hover/button:rotate-12 transition-transform duration-300" />
-            </button>
-            <button
-              onClick={handleNext}
-              className="h-7 w-7 rounded-full bg-secondary flex items-center justify-center group/button"
-            >
-              <IconArrowRight className="h-5 w-5 text-foreground group-hover/button:-rotate-12 transition-transform duration-300" />
-            </button>
-          </div>
         </div>
       </div>
     </div>
