@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { CodeSquare } from "lucide-react";
+import { ImageZoom } from "./zoomable-image";
 
 type Testimonial = {
   quote: string;
@@ -23,7 +25,7 @@ export const AnimatedBox = ({
   className?: string;
 }) => {
   const [active, setActive] = useState(0);
-
+  console.log(testimonials[0].src)
   const handleNext = () => {
     setActive((prev) => (prev + 1) % testimonials.length);
   };
@@ -84,12 +86,11 @@ export const AnimatedBox = ({
                   }}
                   className="absolute inset-0 origin-bottom"
                 >
-                  <Image
+                  <ImageZoom
                     src={testimonial.src}
                     alt={testimonial.name}
                     width={500}
                     height={500}
-                    draggable={false}
                     className="h-full w-full rounded-3xl object-cover object-center"
                   />
                 </motion.div>

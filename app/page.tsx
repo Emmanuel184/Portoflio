@@ -1,3 +1,5 @@
+"use client";
+
 import { WelcomeAnimation } from "@/components/ui/WelcomeAnimation";
 import { BackgroundBeamsWithCollision } from "@/components/ui/BackgroundBeams";
 import { AnimatedBox } from "@/components/ui/AnimatedBox";
@@ -7,20 +9,19 @@ const testimonials = [
       "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
     name: "Sarah Chen",
     designation: "Product Manager at TechFlow",
-    src: "/Screenshot 2025-01-30 at 11.06.43 PM.png",
+    src: "/image/first_image.png",
   },
   {
     quote:
-      "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
+    "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
     name: "Sarah Chen",
     designation: "Product Manager at TechFlow",
-    src: "",
+    src: "/image/first_image.png",
   }]
 export default function Home() {
   return (
     <main>
-      <BackgroundBeamsWithCollision className="absolute inset-0 z-0 bg-[#FAF9F6]">
-        <div className="relative z-10 w-full flex justify-between items-center px-20">
+        <div className="h-screen flex items-center justify-center px-20">
           <div className="w-1/2">
             <AnimatedBox testimonials={testimonials} />
           </div>
@@ -28,7 +29,6 @@ export default function Home() {
             <WelcomeAnimation />
           </div>
         </div>
-      </BackgroundBeamsWithCollision>
     </main>
   );
 }
