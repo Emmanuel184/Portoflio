@@ -56,7 +56,7 @@ export const AnimatedBox = ({
             <AnimatePresence>
               {projects.map((project, index) => (
                 <motion.div
-                  key={project.src + index} // Ensure uniqueness if src might repeat
+                  key={project.src + index}
                   initial={{
                     opacity: 0,
                     scale: 0.9,

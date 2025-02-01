@@ -66,7 +66,7 @@ export default function Home() {
     <main className="fixed inset-0 overflow-hidden">
       <div className="absolute inset-0 flex flex-col">
         {/* Title section with higher z-index */}
-        <div className="absolute left-[290px] bottom-[700px] z-50">
+        <div className="absolute left-[250px] bottom-[650px] z-50">
           <HandWrittenTitle title="Click me to make me bigger!" />
         </div>
         {/* Content section with lower z-index */}

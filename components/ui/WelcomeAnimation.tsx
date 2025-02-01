@@ -9,7 +9,7 @@ export const WelcomeAnimation = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setStep(2);
-    }, 4300);
+    }, 4600);
     return () => clearTimeout(timer);
   }, []);
 
@@ -32,7 +32,7 @@ export const WelcomeAnimation = () => {
   // const staggerFrom = 
   
   return (
-    <div className="w-screen max-w-[1400px] h-full min-h-[300px] xs:text-xl text-xl sm:text-3xl md:text-4xl gap-4 lg:text-4xl xl:text-4xl flex flex-col items-start justify-center font-overusedGrotesk p-10 md:p-16 lg:p-24 text-[#0A3409] tracking-wide uppercase">
+    <div className="w-screen max-w-[1400px] h-full min-h-[300px] xs:text-base text-xs sm:text-xl md:text-xl lg:text-2xl xl:text-3xl gap-4 flex flex-col items-start justify-center font-overusedGrotesk p-10 md:p-16 lg:p-24 text-[#0A3409] tracking-wide">
       <VerticalCutReveal
         key={`line1-${step}`}
         splitBy="characters"
@@ -55,7 +55,7 @@ export const WelcomeAnimation = () => {
         staggerDuration={staggerDurationLine2}
         staggerFrom="last"
         reverse={true}
-        containerClassName="w-full max-w-[600px]"
+        containerClassName="w-full max-w-[500px]"
         transition={{
           type: "spring",
           stiffness: 100,
@@ -71,7 +71,7 @@ export const WelcomeAnimation = () => {
         splitBy="characters"
         staggerDuration={staggerDurationLine3}
         staggerFrom="center"
-        containerClassName="w-full max-w-[600px]"
+        containerClassName="w-full max-w-[500px]"
         transition={{
           type: "spring",
           stiffness: 100,

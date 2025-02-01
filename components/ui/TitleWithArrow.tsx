@@ -50,24 +50,25 @@ export const HandWrittenTitle =({
 
         {/* Animated Stroke (unchanged) */}
         <div className="w-48 h-48">
-          <motion.svg
-            width="100%"
-            height="100%"
-            viewBox="-8 -1 10 9"
-            initial="hidden"
-            animate="visible"
-          >
-            <motion.path
-              d="M 1 1 Q 0 2 0 7"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth=".15"
-              strokeLinecap="round"
-              variants={draw}
-              transform="translate(-3.8, -1.5) scale(1.2)"
-              className="text-black dark:text-white"
-            />
-          </motion.svg>
+  <motion.svg
+    width="100%"
+    height="100%"
+    viewBox="0 0 40 40"
+    initial="hidden"
+    animate="visible"
+  >
+    <motion.path
+      d="M 1.2 -0.5 C -0.3 7.6 4.9 9.3 4.9 9.3 C 4.9 9.3 14.6 14.2 9.1 23.7 C 8.2 26.3 5.8 28.9 6.9 22.1 C 7.4 20.3 5.2 20.9 4.6 24.9 C 4.5 30.5 6.5 30.2 9.9 27.2 C 9.895 27.174 12.192 25.319 12.3 23.3"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth=".75"
+      strokeLinecap="round"
+      variants={draw}
+      transform="translate(14, 0)"
+      className="text-black dark:text-white"
+    />
+  </motion.svg>
+
         </div>
       </div>
     </div>
