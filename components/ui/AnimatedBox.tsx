@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ImageZoom } from "./ZoomableImage";
+import { Undo, Redo } from "lucide-react";
 
 type Project = {
   description: string;
@@ -108,16 +109,16 @@ export const AnimatedBox = ({
           >
             {/* Project Name and Tech Stack */}
             <div>
-              <h3 className="text-3xl font-bold text-foreground mb-2">
+              <h3 className="text-3xl font-computer_handwritten text-foreground mb-2">
                 {projects[active].project_name}
               </h3>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-lg font-computer_handwritten text-muted-foreground mb-6">
                 {projects[active].tech}
               </p>
             </div>
 
             {/* Description */}
-            <motion.p className="text-xl mt-[-10] text-muted-foreground max-w-none whitespace-normal leading-relaxed">
+            <motion.p className="text-xl mt-[-10] text-muted-foreground max-w-none font-computer_handwritten whitespace-normal leading-relaxed">
               {projects[active].description.split(" ").map((word, index) => (
                 <motion.span
                   key={index}
@@ -141,13 +142,13 @@ export const AnimatedBox = ({
                 onClick={handlePrev}
                 className="h-10 w-10 rounded-full bg-secondary flex items-center justify-center group/button hover:bg-opacity-80 transition-colors"
               >
-                <IconArrowLeft className="h-6 w-6 text-foreground group-hover/button:rotate-12 transition-transform" />
+                <Undo className="h-6 w-6 text-foreground group-hover/button:rotate-12 transition-transform" />
               </button>
               <button
                 onClick={handleNext}
                 className="h-10 w-10 rounded-full bg-secondary flex items-center justify-center group/button hover:bg-opacity-50 transition-colors"
               >
-                <IconArrowRight className="h-6 w-6 text-foreground group-hover/button:-rotate-12 transition-transform" />
+                <Redo className="h-6 w-6 text-foreground group-hover/button:-rotate-12 transition-transform" />
               </button>
             </div>
           </motion.div>

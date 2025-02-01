@@ -10,7 +10,8 @@ export default {
   theme: {
   	extend: {
 		fontFamily: {
-			handwritten: ["handwritten", "sans-serif"]
+			handwritten: ["handwritten", "sans-serif"],
+			computer_handwritten: ["computer_handwritten", "sans-serif"]
 		},
   		colors: {
   			background: 'hsl(var(--background))',

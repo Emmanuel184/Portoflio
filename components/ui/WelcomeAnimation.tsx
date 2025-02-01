@@ -9,7 +9,7 @@ export const WelcomeAnimation = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setStep(2);
-    }, 4600);
+    }, 4750);
     return () => clearTimeout(timer);
   }, []);
 
@@ -32,7 +32,7 @@ export const WelcomeAnimation = () => {
   // const staggerFrom = 
   
   return (
-    <div className="w-screen max-w-[1400px] h-full min-h-[300px] xs:text-base text-xs sm:text-xl md:text-xl lg:text-2xl xl:text-3xl gap-4 flex flex-col items-start justify-center font-overusedGrotesk p-10 md:p-16 lg:p-24 text-[#0A3409] tracking-wide">
+    <div className="w-screen max-w-[1400px] h-full min-h-[300px] xs:text-base text-xs sm:text-xl md:text-xl lg:text-2xl xl:text-3xl gap-4 flex flex-col items-start justify-center font-computer_handwritten p-10 md:p-16 lg:p-24 text-[#0A3409] tracking-wide">
       <VerticalCutReveal
         key={`line1-${step}`}
         splitBy="characters"

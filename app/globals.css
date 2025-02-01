@@ -6,6 +6,10 @@
   font-family: 'handwritten';
   src: url('/fonts/ValentineGirls.otf') format('opentype');
 }
+@font-face {
+  font-family: 'computer_handwritten';
+  src: url('/fonts/Naturaly.otf') format('opentype');
+}
 
 body {
   font-family: Arial, Helvetica, sans-serif;
