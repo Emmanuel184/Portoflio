@@ -38,7 +38,7 @@ interface WordObject {
   needsSpace: boolean
 }
 
-const VerticalCutReveal = forwardRef<VerticalCutRevealRef, TextProps>(
+export const VerticalCutReveal = forwardRef<VerticalCutRevealRef, TextProps>(
   (
     {
       children,
@@ -206,5 +206,3 @@ const VerticalCutReveal = forwardRef<VerticalCutRevealRef, TextProps>(
 )
 
 VerticalCutReveal.displayName = "VerticalCutReveal"
-
-export { VerticalCutReveal }

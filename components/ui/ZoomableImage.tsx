@@ -25,13 +25,13 @@ export interface ImageZoomProps extends ImageProps {
   className?: string
 }
 
-function getImageSrc(src: ImageProps["src"]): string {
+const getImageSrc = (src: ImageProps["src"]): string => {
   if (typeof src === "string") return src
   if ("default" in src) return src.default.src
   return src.src
 }
 
-function StyleInjector() {
+export const StyleInjector = () => {
   useEffect(() => {
     // Create style element
     const styleElement = document.createElement('style')
@@ -47,13 +47,14 @@ function StyleInjector() {
   return null
 }
 
-export function ImageZoom({
+export const ImageZoom = ({
   zoomInProps,
   zoomProps,
   className,
   children,
+  alt="something interesting",
   ...props
-}: ImageZoomProps) {
+}: ImageZoomProps) => {
   return (
     <>
       <StyleInjector />
@@ -81,6 +82,7 @@ export function ImageZoom({
               className
             )}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 900px"
+            alt = {alt}
             {...props}
           />
         )}
