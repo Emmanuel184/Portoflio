@@ -11,44 +11,30 @@ const projects = [
     project_name: "Emmanuel Luis",
     tech: "Computer Science Graduate",
     description:
-      "I'm a software engineer passionate about building efficient, scalable solutions. I have experience in automation, full-stack development, and cloud services, with projects ranging from streamlining on-call processes at AWS to developing web applications. I enjoy solving problems and optimizing workflows through technology.",
-    src: "/image/first_image.png",
+      "I'm a software engineer passionate about building efficient, scalable solutions. I have experience in automation, full-stack development, and cloud services, with projects ranging from streamlining on-call processes at AWS to developing web applications. I also enjoy trying out new things especially food :))",
+    src: "https://image-hosting-personal.s3.us-east-2.amazonaws.com/MECANVA.png",
   },
   {
-    project_name: "vscode",
-    tech: "Product Manager at TechFlow",
+    project_name: "Budget App Website",
+    tech: "React, Typescript",
     description:
-      "I'm a software engineer passionate about building efficient, scalable solutions. I have experience in automation, full-stack development, and cloud services, with projects ranging from streamlining on-call processes at AWS to developing web applications. I enjoy solving problems and optimizing workflows through technology. ",
-    src: "/image/second_image.png",
+      "I created a landing page for a budget app website using React and typescript. I managed to fine tune some settings to make it extremly smooth!",
+    src: "https://image-hosting-personal.s3.us-east-2.amazonaws.com/TypescriptBudgetPage.png",
   },
   {
-    project_name: "vscode shorter",
-    tech: "Product Manager at TechFlow",
+    project_name: "AWS Oncall Bot",
+    tech: "Python, AWS SDK",
     description:
-      "I'm a software engineer passionate about building efficient, scalable solutions. I have experience in automation, full-stack development, and cloud services, with projects ranging from streamlining on-call processes at AWS to developing web applications. I enjoy solving problems and optimizing workflows through technology. ",
-    src: "/image/third_image.png",
+      "During my internship at AWS I created an oncall bot meant to help the engineering team during their on-call rotations to have an easier time handling incoming tickets",
+    src: "https://image-hosting-personal.s3.us-east-2.amazonaws.com/AWSInternship.png",
   },
   {
-    project_name: "email",
-    tech: "Product Manager at TechFlow",
+    project_name: "Myngly Web App",
+    tech: "React, Agile, Node",
     description:
-      "I'm a software engineer passionate about building efficient, scalable solutions. I have experience in automation, full-stack development, and cloud services, with projects ranging from streamlining on-call processes at AWS to developing web applications. I enjoy solving problems and optimizing workflows through technology. ",
-    src: "/image/fourth_image.png",
-  },
-  {
-    project_name: "notion",
-    tech: "Product Manager at TechFlow",
-    description:
-      "I'm a software engineer passionate about building efficient, scalable solutions. I have experience in automation, full-stack development, and cloud services, with projects ranging from streamlining on-call processes at AWS to developing web applications. I enjoy solving problems and optimizing workflows through technology. ",
-    src: "/image/fifth_image.png",
-  },
-  {
-    project_name: "meteor",
-    tech: "Product Manager at TechFlow",
-    description:
-      "I'm a software engineer passionate about building efficient, scalable solutions. I have experience in automation, full-stack development, and cloud services, with projects ranging from streamlining on-call processes at AWS to developing web applications. I enjoy solving problems and optimizing workflows through technology. ",
-    src: "/image/sixth_image.png",
-  },
+      "For my senior project we were tasked with creating a web app for a company to be able to host ads on their mobile app. I was the team lead and one of the primary developers. ",
+    src: "https://image-hosting-personal.s3.us-east-2.amazonaws.com/MynglyHostingWebpage.png",
+  }
 ];
 
 export default function Home() {

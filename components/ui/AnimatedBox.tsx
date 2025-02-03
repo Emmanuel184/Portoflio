@@ -23,21 +23,13 @@ export const AnimatedBox = ({
   className?: string;
 }) => {
   const [active, setActive] = useState(0);
-
-  // Precompute a stable random rotation for each project once.
   const projectRotations = useMemo(
     () => projects.map(() => Math.floor(Math.random() * 21) - 10),
     [projects]
   );
 
-  const handleNext = () => {
-    setActive((prev) => (prev + 1) % projects.length);
-  };
-
-  const handlePrev = () => {
-    setActive((prev) => (prev - 1 + projects.length) % projects.length);
-  };
-
+  const handleNext = () => setActive((prev) => (prev + 1) % projects.length);
+  const handlePrev = () => setActive((prev) => (prev - 1 + projects.length) % projects.length);
   const isActive = (index: number) => index === active;
 
   useEffect(() => {
@@ -48,10 +40,9 @@ export const AnimatedBox = ({
   }, [autoplay]);
 
   return (
-    <div className={cn("max-w-6xl mx-auto px-4 md:px-8 lg:px-12 py-20", className)}>
-      <div className="relative grid grid-cols-1 md:grid-cols-[1.5fr_2fr] gap-[100px]">
-        {/* Image Column */}
-        <div className="md:sticky md:top-20">
+    <div className={cn("max-w-6xl mx-auto px-4 md:px-8 lg:px-12", className)}>
+      <div className="relative grid grid-cols-1 md:grid-cols-[1.5fr_2fr] gap-[100px] h-full">
+        <div className="md:sticky md:top-20 h-full">
           <div className="relative h-[500px] w-full">
             <AnimatePresence>
               {projects.map((project, index) => (
@@ -71,16 +62,8 @@ export const AnimatedBox = ({
                     zIndex: isActive(index) ? 999 : projects.length + 2 - index,
                     y: isActive(index) ? [0, -80, 0] : 0,
                   }}
-                  exit={{
-                    opacity: 0,
-                    scale: 0.9,
-                    z: 100,
-                    rotate: isActive(index) ? 0 : projectRotations[index],
-                  }}
-                  transition={{
-                    duration: 1,
-                    ease: "easeInOut",
-                  }}
+                  exit={{ opacity: 0, scale: 0.9, z: 100 }}
+                  transition={{ duration: 1, ease: "easeInOut" }}
                   className="absolute inset-0 origin-bottom flex items-center justify-center"
                 >
                   <ImageZoom
@@ -96,8 +79,7 @@ export const AnimatedBox = ({
           </div>
         </div>
 
-        {/* Content Column */}
-        <div className="flex flex-col">
+        <div className="flex flex-col h-full justify-center">
           <motion.div
             key={active}
             className="flex flex-col"
@@ -106,7 +88,6 @@ export const AnimatedBox = ({
             exit={{ y: -20, opacity: 0 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
           >
-            {/* Project Name and Tech Stack */}
             <div>
               <h3 className="text-3xl font-computer_handwritten text-foreground mb-2">
                 {projects[active].project_name}
@@ -116,18 +97,13 @@ export const AnimatedBox = ({
               </p>
             </div>
 
-            {/* Description */}
             <motion.p className="text-xl mt-[-10] text-muted-foreground max-w-none font-computer_handwritten whitespace-normal leading-relaxed">
               {projects[active].description.split(" ").map((word, index) => (
                 <motion.span
                   key={index}
                   initial={{ filter: "blur(10px)", opacity: 0, y: 5 }}
                   animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.2,
-                    ease: "easeInOut",
-                    delay: 0.02 * index,
-                  }}
+                  transition={{ duration: 0.2, ease: "easeInOut", delay: 0.02 * index }}
                   className="inline-block"
                 >
                   {word}&nbsp;
@@ -135,7 +111,6 @@ export const AnimatedBox = ({
               ))}
             </motion.p>
 
-            {/* Navigation Buttons */}
             <div className="flex gap-4 mt-8">
               <button
                 onClick={handlePrev}

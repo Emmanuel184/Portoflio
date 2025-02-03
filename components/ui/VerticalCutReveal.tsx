@@ -15,7 +15,12 @@ import { cn } from "@/lib/utils"
 interface TextProps {
   children: React.ReactNode
   reverse?: boolean
-  transition?: string
+  transition?: {
+    type?: string
+    stiffness?: number
+    damping?: number
+    delay?: number
+  }
   splitBy?: "words" | "characters" | "lines" | string
   staggerDuration?: number
   staggerFrom?: "first" | "last" | "center" | "random" | number
@@ -86,6 +91,13 @@ export const VerticalCutReveal = forwardRef<VerticalCutRevealRef, TextProps>(
           : text.split(splitBy)
     }, [text, splitBy])
 
+    const reverseStaggerFrom = useCallback((original: string | number) => {
+      if (original === "first") return "last"
+      if (original === "last") return "first"
+      if (typeof original === "number") return original // Handle numbers based on total elements
+      return original
+    }, [])
+
     const getStaggerDelay = useCallback(
       (index: number) => {
         const total =
@@ -99,19 +111,28 @@ export const VerticalCutReveal = forwardRef<VerticalCutRevealRef, TextProps>(
                 0
               )
             : elements.length
-        if (staggerFrom === "first") return index * staggerDuration
-        if (staggerFrom === "last") return (total - 1 - index) * staggerDuration
-        if (staggerFrom === "center") {
+
+        const currentStaggerFrom = isAnimating ? staggerFrom : reverseStaggerFrom(staggerFrom)
+
+        if (currentStaggerFrom === "first") return index * staggerDuration
+        if (currentStaggerFrom === "last") return (total - 1 - index) * staggerDuration
+        if (currentStaggerFrom === "center") {
           const center = Math.floor(total / 2)
           return Math.abs(center - index) * staggerDuration
         }
-        if (staggerFrom === "random") {
+        if (currentStaggerFrom === "random") {
           const randomIndex = Math.floor(Math.random() * total)
           return Math.abs(randomIndex - index) * staggerDuration
         }
-        return Math.abs(staggerFrom - index) * staggerDuration
+        if (typeof currentStaggerFrom === "number") {
+          const adjustedStaggerFrom = isAnimating 
+            ? currentStaggerFrom 
+            : total - 1 - currentStaggerFrom
+          return Math.abs(adjustedStaggerFrom - index) * staggerDuration
+        }
+        return 0
       },
-      [elements.length, staggerFrom, staggerDuration]
+      [elements, splitBy, staggerFrom, staggerDuration, isAnimating, reverseStaggerFrom]
     )
 
     const startAnimation = useCallback(() => {
@@ -119,19 +140,27 @@ export const VerticalCutReveal = forwardRef<VerticalCutRevealRef, TextProps>(
       onStart?.()
     }, [onStart])
 
+    const reset = useCallback(() => {
+      setIsAnimating(false)
+    }, [])
+
     useImperativeHandle(ref, () => ({
       startAnimation,
-      reset: () => setIsAnimating(false),
+      reset,
     }))
 
     useEffect(() => {
-      if (autoStart) {
-        startAnimation()
-      }
-    }, [autoStart])
+      if (autoStart) startAnimation()
+    }, [autoStart, startAnimation])
 
     const variants = {
-      hidden: { y: reverse ? "-100%" : "100%" },
+      hidden: (i: number) => ({
+        y: reverse ? "-100%" : "100%",
+        transition: {
+          ...transition,
+          delay: ((transition?.delay as number) || 0) + getStaggerDelay(i),
+        },
+      }),
       visible: (i: number) => ({
         y: 0,
         transition: {
@@ -184,12 +213,11 @@ export const VerticalCutReveal = forwardRef<VerticalCutRevealRef, TextProps>(
                     initial="hidden"
                     animate={isAnimating ? "visible" : "hidden"}
                     variants={variants}
-                    onAnimationComplete={
-                      wordIndex === elements.length - 1 &&
-                      charIndex === wordObj.characters.length - 1
-                        ? onComplete
-                        : undefined
-                    }
+                    onAnimationComplete={() => {
+                      if (!isAnimating && wordIndex === elements.length - 1 && charIndex === wordObj.characters.length - 1) {
+                        onComplete?.()
+                      }
+                    }}
                     className="inline-block"
                   >
                     {char}
