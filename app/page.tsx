@@ -5,7 +5,6 @@ import { AnimatedBox } from "@/components/ui/AnimatedBox";
 import { useEffect, useState } from "react";
 import { HandWrittenTitle } from "@/components/ui/TitleWithArrow";
 
-
 const projects = [
   {
     project_name: "Emmanuel Luis",
@@ -50,17 +49,17 @@ export default function Home() {
 
   return (
     <main className="fixed inset-0 overflow-hidden">
-      <div className="absolute inset-0 flex flex-col">
-        {/* Title section with higher z-index */}
-        <div className="absolute left-[250px] bottom-[650px] z-50">
-          <HandWrittenTitle title="Click me to make me bigger!" />
-        </div>
-        {/* Content section with lower z-index */}
-        <div className="flex-1 flex items-center justify-center gap-x-[-20] z-20">
-          <div className="w-[50%]">
+      <div className="absolute inset-0 flex flex-col overflow-visible">
+        <div className="flex-1 flex items-center justify-center gap-x-[-20]">
+          <div className="w-[50%] relative">
+          <div className="z-50 translate-x-[-26%] translate-y-[30%]">
+    <HandWrittenTitle title="Click me to make me bigger!" />
+  </div>
+            
             <AnimatedBox projects={projects} />
           </div>
-          <div className="w-[42%] -ml-16">
+          
+          <div className="w-[42%] -ml-16 z-20">
             <WelcomeAnimation />
           </div>
         </div>
