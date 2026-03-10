@@ -77,7 +77,7 @@ const multiverseProjects = [
     skillDemo:
       "On the backend, we tested all the CRUD operations, not just on success but also failures like server errors or database issues where an item might not be found. We mocked the database to isolate the server from its database dependency, and also wrote unit tests for the database individually. On the frontend, we tested fetching correct items on load, search query results, and cart interactions like adding, removing, and checking out. We achieved 100% code coverage on our backend tests, which gave us a lot of confidence in our API.",
     takeaways:
-      "Nobody on the team was familiar with frontend tests going in, so Bhavik had to learn React Testing Library to write those, which helped us out a lot. We also couldn't initially run both our frontend and backend tests with a single script, so we wrote a Jest config file to set the right environment for both. That ended up being a big win for us.",
+      "Nobody on the team was familiar with frontend tests going in, so we had to learn React Testing Library to write those. We also couldn't initially run both our frontend and backend tests with a single script, so we wrote a Jest config file to set the right environment for both. That ended up being a big win for us.",
     contribution:
       "I led the backend testing effort, writing unit tests for all server routes with mocked database dependencies. I also presented the testing overview for the team, walking through both our frontend and backend test strategies.",
   },
@@ -141,7 +141,7 @@ const multiverseProjects = [
     takeaways:
       "Getting to work with the Spring Boot ecosystem was really interesting, especially seeing how Auth0 integrates for authentication. Building the Python demo script was a cool way to showcase what our API can do, including the error handling. It was also good practice using GitHub to manage the project workflows and keep track of everything the team was working on.",
     contribution:
-      "I introduced the project and demonstrated the application, including the Auth0 login flow and the Python API demo script I built. I worked on the core service layer and the API endpoints for user and plan management. I then handed it over to Boogie for his part of the presentation.",
+      "I implemented the Auth0 login flow and built the Python API demo script. I also worked on the core service layer, creating controllers and services for user and plan management.",
   },
   {
     title: "Book Tracker",
@@ -183,13 +183,12 @@ const multiverseProjects = [
       "Fortune API tool that calls a backend API",
       "CI/CD pipeline with GitHub Actions (builds Docker images on merge to main)",
       "Terraform to create the AWS resources",
-      "HTTPS with Route 53 and AWS Certificate Manager",
       "Docker images pushed to Docker Hub",
       "Linting and security checks on Go, Terraform, and Docker files",
     ],
     skills: [
       "Go",
-      "AWS (ECS, Route 53, ACM, Load Balancer)",
+      "AWS",
       "Terraform",
       "GitHub Actions",
       "Docker",
@@ -198,11 +197,11 @@ const multiverseProjects = [
       "Infrastructure as Code",
     ],
     skillDemo:
-      "Terraform handles creating the AWS resources, and GitHub Actions builds and pushes Docker images to Docker Hub whenever a PR is merged to main. GitHub Actions also runs linting and security checks on our Go, Terraform, and Docker files. On the AWS side, we used ECS with a load balancer in front of it, and set up HTTPS through Route 53 and the AWS Certificate Manager. The tools we built include a loan APR calculator, a fortune API that calls a backend endpoint, and the Hello World tool from the SDK.",
+      "Terraform handles creating the AWS resources, and GitHub Actions builds and pushes Docker images to Docker Hub whenever a PR is merged to main. GitHub Actions also runs linting and security checks on our Go, Terraform, and Docker files. On the AWS side, we used ECS with a load balancer in front of it. The tools we built include a loan APR calculator, a fortune API that calls a backend endpoint, and the Hello World tool from the SDK.",
     takeaways:
       "Deployment was both easy and hard at times. We learned a lot about setting up a deployment pipeline, and in the future we'd have a much easier time with the parts that tripped us up. Our three main takeaways: we needed more tests to make deployments more robust, we could have added more complex tools to the server, and we came out with a solid foundation we could keep building on.",
     contribution:
-      "I worked on this with Justin and Damien. We introduced the project together, talked about the technology, showed a demo, and gave a retrospective of what went right and what went wrong.",
+      "I built the loan APR calculator tool and helped set up the AWS infrastructure and Terraform configuration. I also contributed to the Go test suite for the server.",
   },
 ];
 
@@ -253,26 +252,44 @@ export default function Home() {
             My Apprenticeship
           </h2>
           <div className="rounded-3xl border border-border bg-card/50 backdrop-blur-sm p-8 md:p-12 space-y-6">
-            <p className="text-lg font-computer_handwritten text-muted-foreground leading-relaxed">
-              Hey, I&apos;m Emmanuel Luis, a Computer Science graduate and
-              software engineer. I completed my apprenticeship through
-              Multiverse where I got hands-on experience in full-stack
-              development, cloud services, and a lot of the modern software
-              engineering practices I use today. I enjoy building things
-              and figuring out how to make them work well, and I&apos;m always
-              eager to pick up new technologies. During my apprenticeship
-              alone I went from React and Node.js to Spring Boot, Go,
-              Terraform, and AWS services.
+            <p className="text-xl font-computer_handwritten text-muted-foreground leading-relaxed">
+              Hey, I&apos;m Emmanuel Luis, a Computer Science graduate from
+              UT Dallas and current Master&apos;s student at Georgia Tech. I
+              completed my apprenticeship at Verizon through the Thrive
+              Apprenticeship program over the course of a year.
+              I&apos;m a software engineer who loves building things that
+              solve real problems. What drives me is seeing the direct
+              impact of what I build, whether that&apos;s saving a team hours
+              of manual work or making a process that used to be painful
+              actually work smoothly. My areas of interest are full-stack
+              development, cloud services, and more recently AI and machine
+              learning.
             </p>
-            <p className="text-lg font-computer_handwritten text-muted-foreground leading-relaxed">
-              Throughout my apprenticeship, I worked on team projects that
-              really helped me grow. We achieved 100% backend test coverage
-              on our inventory app which gave us a lot of confidence. I
-              built a digital wallet system with Docker and deployed it to
-              Google Cloud. I created a React SPA with technologies I had
-              to learn from zero. And we deployed an MCP server to AWS
-              with a full CI/CD pipeline. Each project helped me get better
-              at collaborating, presenting, and delivering.
+            <p className="text-xl font-computer_handwritten text-muted-foreground leading-relaxed">
+              During my apprenticeship I worked on the Blockchain team at
+              Verizon, where my main contribution was to ClaRA, our claims
+              management system service extension. Before ClaRA, dispute
+              claim resolutions were handled entirely manually. Agents had
+              to review each claim individually, find supporting evidence,
+              and write out resolutions themselves. I helped build an
+              end-to-end automated system that changed that. Specifically,
+              I built the allow-listing interface that gave the business
+              team control over which claims the system could process, and
+              I implemented validation logic in our Spring Boot backend
+              that determined whether a claim qualified for automated
+              resolution. The system cut dispute claims by 80% and saves
+              approximately $25 million per year in cash flow.
+            </p>
+            <p className="text-xl font-computer_handwritten text-muted-foreground leading-relaxed">
+              Beyond ClaRA, my apprenticeship pushed me to grow technically
+              across the board. I went from working with React and Node.js
+              to picking up Spring Boot, Go, and more. Through team projects
+              I achieved 100% backend test coverage on an inventory app,
+              built a digital wallet system deployed to Google Cloud with
+              Docker, created a React SPA learning technologies from scratch,
+              and deployed an MCP server to AWS with a full CI/CD pipeline.
+              Each project made me better at collaborating, presenting, and
+              delivering under real deadlines.
             </p>
           </div>
         </motion.div>
@@ -315,7 +332,7 @@ export default function Home() {
                   <h4 className="text-xl font-computer_handwritten text-foreground mb-3">
                     Overview
                   </h4>
-                  <p className="text-lg font-computer_handwritten text-muted-foreground leading-relaxed">
+                  <p className="text-xl font-computer_handwritten text-muted-foreground leading-relaxed">
                     {project.overview}
                   </p>
                 </div>
@@ -324,13 +341,13 @@ export default function Home() {
                   <h4 className="text-xl font-computer_handwritten text-foreground mb-3">
                     Key Features
                   </h4>
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
                     {project.features.map((feature) => (
                       <li
                         key={feature}
-                        className="flex items-start gap-2 text-lg font-computer_handwritten text-muted-foreground"
+                        className="flex items-start gap-2 text-xl font-computer_handwritten text-muted-foreground"
                       >
-                        <span className="text-[#0A3409] mt-1">-</span>
+                        <span className="text-[#0A3409] mt-1 shrink-0">-</span>
                         {feature}
                       </li>
                     ))}
@@ -351,7 +368,7 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
-                  <p className="text-lg font-computer_handwritten text-muted-foreground leading-relaxed">
+                  <p className="text-xl font-computer_handwritten text-muted-foreground leading-relaxed">
                     {project.skillDemo}
                   </p>
                 </div>
@@ -361,7 +378,7 @@ export default function Home() {
                     <h4 className="text-xl font-computer_handwritten text-foreground mb-3">
                       My Contribution
                     </h4>
-                    <p className="text-lg font-computer_handwritten text-muted-foreground leading-relaxed">
+                    <p className="text-xl font-computer_handwritten text-muted-foreground leading-relaxed">
                       {project.contribution}
                     </p>
                   </div>
@@ -371,7 +388,7 @@ export default function Home() {
                   <h4 className="text-xl font-computer_handwritten text-foreground mb-3">
                     Takeaways
                   </h4>
-                  <p className="text-lg font-computer_handwritten text-muted-foreground leading-relaxed italic">
+                  <p className="text-xl font-computer_handwritten text-muted-foreground leading-relaxed">
                     {project.takeaways}
                   </p>
                 </div>
@@ -392,7 +409,7 @@ export default function Home() {
             Reflection on My Learning
           </h2>
           <div className="rounded-3xl border border-border bg-card/50 backdrop-blur-sm p-8 md:p-12 space-y-8">
-            <p className="text-lg font-computer_handwritten text-muted-foreground leading-relaxed">
+            <p className="text-xl font-computer_handwritten text-muted-foreground leading-relaxed">
               When I started this apprenticeship I had a CS degree and some
               experience from my AWS internship, but the Multiverse program
               pushed me to grow in ways I wasn&apos;t expecting. Coming in, I
@@ -402,33 +419,33 @@ export default function Home() {
               setting up cloud infrastructure to debugging across multiple
               services at once.
             </p>
-            <p className="text-lg font-computer_handwritten text-muted-foreground leading-relaxed">
+            <p className="text-xl font-computer_handwritten text-muted-foreground leading-relaxed">
               The biggest thing I learned is that I can pick up new
               technologies quickly and figure things out. Every single
               project had something I&apos;d never worked with before,
-              whether it was Zustand, Spring Boot, Go, or Terraform, and
+              whether it was Zustand, Spring Boot, or Go, and
               each time I was able to get up to speed and deliver. That
               pattern of learning from zero and making it work is something
               I now trust about myself as an engineer.
             </p>
-            <p className="text-lg font-computer_handwritten text-muted-foreground leading-relaxed">
+            <p className="text-xl font-computer_handwritten text-muted-foreground leading-relaxed">
               I also grew a lot in how I work with others. Early on I was
               mostly focused on my own code, but by the end I was leading
               testing efforts, presenting for the team, and thinking about
               how to make the whole project better, not just my part. Working
-              with teammates like Bhavik, Boogie, Justin, and Damien taught
-              me that good communication matters just as much as good code.
+              with my teammates taught me that good communication matters
+              just as much as good code.
             </p>
-            <p className="text-lg font-computer_handwritten text-muted-foreground leading-relaxed">
-              Looking back, the projects that challenged me the most are the
-              ones I got the most out of. Debugging across authentication
-              and database layers on Multicash taught me how to isolate
+            <p className="text-xl font-computer_handwritten text-muted-foreground leading-relaxed">
+              Looking back, Multicash was probably the project that
+              challenged me the most and the one I got the most out of.
+              Debugging across authentication and database layers taught me how to isolate
               problems. Writing my first unit tests on Book Tracker changed
               how I think about building components. And deploying to AWS
               with a full CI/CD pipeline showed me what it takes to ship
               something for real, not just get it running locally.
             </p>
-            <p className="text-lg font-computer_handwritten text-muted-foreground leading-relaxed">
+            <p className="text-xl font-computer_handwritten text-muted-foreground leading-relaxed">
               Going forward, I&apos;m most interested in full-stack
               development, cloud infrastructure, and building tools that
               make people&apos;s work easier. That&apos;s what got me into
