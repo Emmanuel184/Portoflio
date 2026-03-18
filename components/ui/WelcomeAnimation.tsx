@@ -13,12 +13,12 @@ export const WelcomeAnimation = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const lineOneText = step === 1 ? "Hello👋" : "To left are my projects!";
-  const lineTwoText = step === 1 
-    ? "it's a pleasure ✨ to connect with you :)" 
-    : "Feel free to go through them :)";
-  const lineThreeText = step === 1 
-    ? "Thanks 😊 for visiting my website!" 
+  const lineOneText = step === 1 ? "Hello👋" : "To the left are quick overviews!";
+  const lineTwoText = step === 1
+    ? "it's a pleasure ✨ to connect with you :)"
+    : "Scroll down for the full details :)";
+  const lineThreeText = step === 1
+    ? "Thanks 😊 for visiting my website!"
     : "Have a great day!";
 
   const staggerDurationLine1 = step === 1 ? 0.025 : 0.04;

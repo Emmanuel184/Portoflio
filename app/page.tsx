@@ -55,6 +55,7 @@ const multiverseProjects = [
   {
     title: "Inventory App",
     subtitle: "Full Stack Application",
+    github: "https://github.com/invapp-vzswe3/Inventory-App",
     overview:
       "A full-stack inventory management app with a React frontend and Node.js backend. Users can browse items, search for what they need, add items to a cart, and checkout. We used Jest for both our frontend and backend tests, along with React Testing Library to mimic real UI interactions.",
     features: [
@@ -84,6 +85,7 @@ const multiverseProjects = [
   {
     title: "Multicash",
     subtitle: "Final Bootcamp Project",
+    github: "https://github.com/EmmanuelMultiverse/cashtransferservice",
     overview:
       "Multicash is a digital wallet app that simplifies money transfers using an in-service balance. Users can make peer-to-peer transfers with anyone who has an account, deposit money from any bank, and withdraw to any bank as well.",
     features: [
@@ -115,6 +117,7 @@ const multiverseProjects = [
   {
     title: "Horizon",
     subtitle: "Back End Module Project",
+    github: "https://github.com/Horizon-MV/Horizon-App",
     overview:
       "Horizon is a backend platform for managing users and wireless phone plans. Authentication is handled through Auth0 with Google login. The core service is built with Spring Boot, using Spring JPA with Hibernate for the data layer and H2 as the in-memory database.",
     features: [
@@ -146,6 +149,7 @@ const multiverseProjects = [
   {
     title: "Book Tracker",
     subtitle: "Front End Module Project",
+    github: "https://github.com/EmmanuelMultiverse/book-tracker",
     overview:
       "Book Tracker is a React SPA that uses the OpenLibrary API to let users search for books and save them to a personal collection. It features client-side routing with React Router, including nested routes and URL parameters for individual book pages.",
     features: [
@@ -174,6 +178,7 @@ const multiverseProjects = [
   {
     title: "MCP Server",
     subtitle: "Deployment Module Project",
+    github: "https://github.com/EmmanuelDamienDustinDeploymentProject/DeploymentProject",
     overview:
       "An MCP (Model Context Protocol) server built in Go and deployed to AWS Elastic Container Service using Terraform and GitHub Actions. MCP is an open source standard for connecting AI applications to external systems. We used built-in Go libraries including net/HTTP along with the MCP Go SDK.",
     features: [
@@ -266,22 +271,16 @@ export default function Home() {
               learning.
             </p>
             <p className="text-xl font-computer_handwritten text-muted-foreground leading-relaxed">
-              During my apprenticeship I worked on the Blockchain team at
-              Verizon, where my main contribution was to ClaRA, our claims
-              management system service extension. Before ClaRA, dispute
-              claim resolutions were handled entirely manually. Agents had
-              to review each claim individually, find supporting evidence,
-              and write out resolutions themselves. I helped build an
-              end-to-end automated system that changed that. Specifically,
-              I built the allow-listing interface that gave the business
-              team control over which claims the system could process, and
-              I implemented validation logic in our Spring Boot backend
-              that determined whether a claim qualified for automated
-              resolution. The system cut dispute claims by 80% and saves
-              approximately $25 million per year in cash flow.
+              During my apprenticeship I worked on an engineering team at
+              Verizon, where I contributed to an internal enterprise
+              service. I built frontend interfaces using React and
+              implemented backend validation logic with Spring Boot. I
+              also got hands-on experience working across the full stack
+              in a production environment, which really leveled up how I
+              think about building reliable software.
             </p>
             <p className="text-xl font-computer_handwritten text-muted-foreground leading-relaxed">
-              Beyond ClaRA, my apprenticeship pushed me to grow technically
+              Beyond that, my apprenticeship pushed me to grow technically
               across the board. I went from working with React and Node.js
               to picking up Spring Boot, Go, and more. Through team projects
               I achieved 100% backend test coverage on an inventory app,
@@ -326,6 +325,25 @@ export default function Home() {
                   <h3 className="text-3xl md:text-4xl font-computer_handwritten text-foreground mb-4">
                     {project.title}
                   </h3>
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-lg font-computer_handwritten text-[#0A3409]/70 hover:text-[#0A3409] transition-colors"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                      </svg>
+                      View on GitHub
+                    </a>
+                  )}
                 </div>
 
                 <div className="mb-8">
